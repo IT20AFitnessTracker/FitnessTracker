@@ -157,6 +157,18 @@ public class FitnessTracker {
                     [4] Back
                     """.formatted(workout, getTimerString());
 
-            String input = JOptionPane,showInputDialog(null, timerDisplay);
+            String input = JOptionPane.showInputDialog(null, timerDisplay);
+            
+            if (input == null) return;
+
+            switch (input) {
+                case "1" -> startTimer();
+                case "2" -> pauseTimer();
+                case "3" -> saveSession(workout);
+                case "4" -> exit = true;
+                default -> JOptionPane.showMessageDialog(null, "Invalid option.");
+            }
+        }
+    }
 
 

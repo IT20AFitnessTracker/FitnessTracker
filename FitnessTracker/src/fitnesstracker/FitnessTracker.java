@@ -55,7 +55,7 @@ public class FitnessTracker {
         }
     }
 
-    protected static void signUp() {
+    private static void signUp() {
         String user = JOptionPane.showInputDialog("Enter new username:");
 
         if (user == null || user.isEmpty()) return;
@@ -93,3 +93,42 @@ public class FitnessTracker {
         }
     }
 }
+
+  private static void mainMenu() {
+        
+      String menu = """
+                      
+                ------------------------------
+                        Welcome, %s!
+                ------------------------------
+
+                Choose Workout Type:
+                1. Cardio
+                2. Strength
+                3. Yoga
+                4. Custom Workout
+                5. View History
+
+                [ Logout = 6 ]
+                ------------------------------
+                """.formatted(Part1.currentUser);
+
+        String input = JOptionPane.showInputDialog(null, menu);
+
+        if (input == null) return;
+
+        switch (input) {
+            case "1" -> Part4.timerScreen("Cardio");
+            case "2" -> Part4.timerScreen("Strength");
+            case "3" -> Part4.timerScreen("Yoga");
+            case "4" -> Part4.customWorkout();
+            case "5" -> Part4.showHistory();
+            case "6" -> {
+                Part1.loggedIn = false;
+                Part1.currentUser = "";
+                JOptionPane.showMessageDialog(null, "Logged out!");
+            }
+            default -> JOptionPane.showMessageDialog(null, "Invalid option.");
+        }
+    }
+

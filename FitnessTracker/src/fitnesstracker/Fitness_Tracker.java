@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FitnessTracker {
+public class Fitness_Tracker {
 
     private static Map<String, String> users = new HashMap<>();
     private static Map<String, StringBuilder> sessionHistory = new HashMap<>();
@@ -253,4 +253,4 @@ public class FitnessTracker {
         JOptionPane.showMessageDialog(null,
                 "=== SESSION HISTORY ===\n\n" + history);
     }
-});
+};

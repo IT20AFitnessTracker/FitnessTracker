@@ -131,4 +131,32 @@ public class FitnessTracker {
             default -> JOptionPane.showMessageDialog(null, "Invalid option.");
         }
     }
+  private static void customWorkout() {
+        String w = JOptionPane.showInputDialog("Enter custom workout name:");
+
+        if (w != null && !w.isEmpty()) {
+            timerScreen(w);
+        }
+    }
+
+    private static void timerScreen(String workout) {
+
+        boolean exit = false;
+
+        while (!exit) {
+
+            String timerDisplay = """
+                    ------------------------------
+                    Workout: %s
+                    Timer: %s
+                    ------------------------------
+
+                    [1] Start  
+                    [2] Pause  
+                    [3] Save Session  
+                    [4] Back
+                    """.formatted(workout, getTimerString());
+
+            String input = JOptionPane,showInputDialog(null, timerDisplay);
+
 

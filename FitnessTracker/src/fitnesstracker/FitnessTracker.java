@@ -189,3 +189,13 @@ private static void pauseTimer() {
             JOptionPane.showMessageDialog(null, "Timer is not running.");
         }
     }
+private static void stopTimer() {
+        if (Part1.startTime == null) {
+            JOptionPane.showMessageDialog(null, "Timer not started.");
+            return;
+        }
+
+        Part1.pauseTime = LocalDateTime.now();
+        Part1.isRunning = false;
+        JOptionPane.showMessageDialog(null, "Timer stopped.");
+    }

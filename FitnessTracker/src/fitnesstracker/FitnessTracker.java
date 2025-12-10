@@ -170,5 +170,13 @@ public class FitnessTracker {
             }
         }
     }
-
+private static void startTimer() {
+        if (!Part1.isRunning) {
+            Part1.startTime = LocalDateTime.now();
+            Part1.isRunning = true;
+            JOptionPane.showMessageDialog(null, "Timer started!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Timer already running.");
+        }
+    }
 

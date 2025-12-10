@@ -199,3 +199,48 @@ private static void stopTimer() {
         Part1.isRunning = false;
         JOptionPane.showMessageDialog(null, "Timer stopped.");
     }
+private static String getTimerString() {
+        if (Part1.startTime == null) return "00:00:00";
+
+        LocalDateTime end = Part1.isRunning ? LocalDateTime.now() : Part1.pauseTime;
+
+        long seconds = Duration.between(Part1.startTime, end).toSeconds();
+
+        long h = seconds / 3600;
+        long m = (seconds % 3600) / 60;
+        long s = seconds % 60;
+
+        return String.format("%02d:%02d:%02d", h, m, s);
+    }
+
+    protected static void saveSession(String workout) {
+
+        if (Part1.startTime == null) {
+            JOptionPane.showMessageDialog(null, "No session to save.");
+            return;
+        }
+
+        String time = getTimerString();
+        Part1.sessionHistory.get(Part1.currentUser)
+                .append("Workout: ").append(workout)
+                .append(" | Duration: ").append(time).append("\n");
+
+        JOptionPane.showMessageDialog(null,
+                "Session Saved!\nWorkout: " + workout + "\nTime: " + time);
+
+        Part1.startTime = null;
+        Part1.pauseTime = null;
+        Part1.isRunning = false;
+    }
+
+    protected static void showHistory() {
+        StringBuilder history = Part1.sessionHistory.get(Part1.currentUser);
+
+        if (history.length() == 0) {
+            JOptionPane.showMessageDialog(null, "No sessions saved yet.");
+            return;
+        }
+
+        JOptionPane.showMessageDialog(null,
+                "=== SESSION HISTORY ===\n\n" + history);
+    }

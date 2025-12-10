@@ -180,3 +180,12 @@ private static void startTimer() {
         }
     }
 
+private static void pauseTimer() {
+        if (Part1.isRunning) {
+            Part1.pauseTime = LocalDateTime.now();
+            Part1.isRunning = false;
+            JOptionPane.showMessageDialog(null, "Timer paused!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Timer is not running.");
+        }
+    }
